@@ -15,6 +15,11 @@ function addGameOverFalseClass() {
     player2Button.classList.add("game-over-false")
 }
 
+function removeGameOverClass() {
+    player1Button.classList.remove("game-over-false")
+    player2Button.classList.remove("game-over-false")
+}
+
 function gameStarting() {
     player1Score = 0
     player2Score = 0
@@ -36,8 +41,8 @@ player1Button.addEventListener("click", function () {
             if (player1Score - player2Score >= 2) {
                 p1ScoreText.style.color = "green";
                 p2ScoreText.style.color = "red"
-                addGameOverFalseClass()
                 gameOver = true
+                removeGameOverClass()
             }
             else {
                 winningScore += 1
@@ -57,7 +62,7 @@ player2Button.addEventListener("click", function () {
             if (player2Score - player1Score >= 2) {
                 p2ScoreText.style.color = "green";
                 p1ScoreText.style.color = "red"
-                addGameOverFalseClass()
+                removeGameOverClass()
                 gameOver = true
             } else {
                 winningScore += 1
@@ -70,7 +75,7 @@ player2Button.addEventListener("click", function () {
 
 winningScoreOption.addEventListener("change", function () {
     winningScore = parseInt(this.value)
-    reset()
+    gameStarting()
 })
 
 resetScoreButton.addEventListener("click", gameStarting)
